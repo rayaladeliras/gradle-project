@@ -8,12 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class GradleProjectApplicationTests {
 
-	@Autowired PersonPrinter personPrinter;
 
-	@Test
-	void contextLoads() {
-		String persons = this.personPrinter.print();
-		BDDAssertions.then(persons).isEqualTo("marcin\njohn");
-	}
 
 }
