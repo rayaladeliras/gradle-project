@@ -22,41 +22,4 @@ public class GradleProjectApplication {
 
 }
 
-@Configuration
-class MyConfig {
-	@Bean
-	PersonFetcher personFetcher() {
-		return new PersonFetcher();
-	}
 
-	@Bean
-	PersonPrinter personPrinter() {
-		return new PersonPrinter();
-	}
-}
-
-class PersonPrinter {
-	@Autowired private PersonFetcher personFetcher;
-
-	String print() {
-		return this.personFetcher.fetchPeople().stream()
-				.map(person -> person.name)
-				.collect(Collectors.joining("\n"));
-	}
-}
-
-class PersonFetcher {
-	List<Person> fetchPeople() {
-		return Arrays.asList(new Person("marcin", "g"),
-				new Person("john", "d"));
-	}
-}
-
-class Person {
-	String name, surname;
-
-	public Person (String name, String surname) {
-		this.name = name;
-		this.surname = surname;
-	}
-}
